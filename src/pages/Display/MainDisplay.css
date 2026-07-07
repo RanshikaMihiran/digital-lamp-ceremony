@@ -1,165 +1,186 @@
-.display-container {
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Great+Vibes&display=swap');
+
+.ceremony-container {
   height: 100vh;
-  /* Polished mahogany wood board color */
-  background: radial-gradient(circle at center, #5c2b16 0%, #2a1106 60%, #120500 100%);
+  /* Dark luxury crimson/maroon to deep black radial gradient background */
+  background: radial-gradient(circle at center, #290808 0%, #120202 50%, #050000 100%);
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Cinzel', serif; /* Majestic Roman / Gold Font style */
   overflow: hidden;
   position: relative;
 }
 
-/* Subtle wood grain overlay & board markings */
-.board-texture {
+/* Luxury Traditional Linework Motif Overlay Background */
+.traditional-pattern-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 2px, transparent 2px, transparent 8px);
+  background-image: radial-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+  opacity: 0.7;
   pointer-events: none;
   z-index: 1;
 }
 
-.board-lines {
+.golden-soft-glow {
   position: absolute;
-  bottom: 12vh;
-  width: 100%;
-  height: 15px;
-  background: rgba(0, 0, 0, 0.4);
-  border-top: 3px solid #d32f2f;
-  border-bottom: 3px solid #d32f2f;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 80vh;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+  pointer-events: none;
   z-index: 2;
 }
 
-.branding-header {
+/* Premium Typography Header Design */
+.branding-wrapper {
   text-align: center;
   margin-top: 50px;
   z-index: 10;
 }
 
-.branding-header h1 {
-  font-size: 4rem;
+.branding-wrapper .main-title {
+  font-size: 3rem;
+  font-weight: 700;
   color: #ffffff;
-  letter-spacing: 4px;
-  margin-bottom: 10px;
-  font-weight: 800;
-  text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+  letter-spacing: 5px;
+  margin-bottom: 0px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
-.branding-header h2 {
-  font-size: 1.2rem;
-  color: #00ffcc;
-  letter-spacing: 12px;
-  font-weight: 600;
-  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+.title-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  gap: 15px;
+  opacity: 0.7;
 }
 
-.ceremony-stage {
+.title-divider .line {
+  width: 150px;
+  height: 1px;
+  background: linear-gradient(to var(--direction, right), transparent, #d4af37, transparent);
+}
+
+.title-divider .diamond {
+  color: #d4af37;
+  font-size: 0.8rem;
+}
+
+.branding-wrapper .sub-title {
+  font-size: 1.4rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  color: #d4af37; /* Royal Metallic Gold */
+  letter-spacing: 8px;
+  text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Stage & Platform Design */
+.display-stage {
   margin-top: auto;
-  margin-bottom: 15vh;
+  margin-bottom: 8vh;
   position: relative;
-  width: 90%;
+  width: 95%;
   display: flex;
   justify-content: center;
-  z-index: 10;
+  z-index: 5;
 }
 
-.strikers-wrapper {
+/* Simulates the white floral and gold drape runner base from Image 1 */
+.festive-floral-base {
+  position: absolute;
+  bottom: -15px;
+  width: 100%;
+  height: 25px;
+  background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
+  border-top: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 -10px 30px rgba(212, 175, 55, 0.05);
+  z-index: 1;
+}
+
+.lamps-alignment-grid {
   display: flex;
-  gap: 80px;
-  align-items: center;
+  gap: 50px;
+  align-items: flex-end;
+  z-index: 2;
 }
 
-.striker-station {
+.lamp-pillar-station {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
 }
 
-/* SVG Striker Styling */
-.striker-svg {
-  width: 140px;
-  height: 140px;
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* Ornate SVG Scaling */
+.royal-lamp-svg {
+  width: 160px;
+  height: 260px;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.8));
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.color-ring, .center-star {
-  transition: all 0.4s ease;
-}
-
-/* The Magic! What happens when you tap the tablet */
-.striker-svg.is-active {
-  transform: translateY(-20px) scale(1.1); /* Levitates */
-  filter: drop-shadow(0 20px 30px rgba(0, 255, 204, 0.4)) 
-          drop-shadow(0 0 60px rgba(0, 179, 255, 0.6));
-}
-
-.striker-svg.is-active .striker-shadow {
-  transform: translateY(20px) scale(0.8);
-  opacity: 0.3;
-}
-
-/* Carrom Powder (Boric Acid) Particle Animation */
-.powder-area {
+/* Background Ambient Aura triggered when a Lamp updates to TRUE */
+.lamp-aura-glow {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
+  top: 20px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(253, 184, 19, 0.12) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.8s ease;
   pointer-events: none;
   z-index: -1;
 }
 
-.powder-particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #ffffff;
-  opacity: 0;
+.is-ignited .lamp-aura-glow {
+  opacity: 1;
 }
 
-/* Individual particle trajectories */
-.p1 { animation: powderExplode 2s infinite ease-out; top: 50%; left: 50%; }
-.p2 { animation: powderExplode 2.2s infinite ease-out 0.4s; top: 40%; left: 45%; }
-.p3 { animation: powderExplode 1.8s infinite ease-out 0.8s; top: 60%; left: 55%; }
-.p4 { animation: powderExplode 2.5s infinite ease-out 1.2s; top: 45%; left: 60%; }
-.p5 { animation: powderExplode 2.1s infinite ease-out 1.6s; top: 55%; left: 40%; }
-
-@keyframes powderExplode {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translate(calc(-50px + 100px * var(--x, 1)), calc(-80px + 120px * var(--y, -1))) scale(0);
-    opacity: 0;
-  }
+.is-ignited .royal-lamp-svg {
+  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.25)) drop-shadow(0 15px 25px rgba(0,0,0,0.6));
 }
-/* Adding random directions using nth-child */
-.p1 { --x: -0.8; --y: -1; }
-.p2 { --x: 0.5; --y: -1.2; }
-.p3 { --x: 1.2; --y: -0.5; }
-.p4 { --x: -1.2; --y: -0.2; }
-.p5 { --x: 0.2; --y: -1.5; }
 
-/* Text Labels */
-.station-label {
-  margin-top: 35px;
-  color: #fff;
-  font-size: 1.1rem;
+/* Multi-Wick High Fidelity Synchronous Flamework Animation */
+.master-flame, .sub-flame {
+  transform-origin: bottom center;
+  animation: traditionalFlicker 0.12s infinite alternate ease-in-out, traditionalSway 4s ease-in-out infinite;
+}
+
+.sub-flame.lf { animation-delay: 0.04s; transform-origin: 45px 105px; }
+.sub-flame.rf { animation-delay: 0.08s; transform-origin: 115px 105px; }
+
+@keyframes traditionalFlicker {
+  0% { transform: scale(1) rotate(-0.5deg); filter: brightness(0.95) drop-shadow(0 0 4px #ff5100); }
+  100% { transform: scale(1.04) rotate(0.5deg); filter: brightness(1.15) drop-shadow(0 0 15px #ffae00); }
+}
+
+@keyframes traditionalSway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* Typography Labels for Lamps */
+.lamp-caption {
+  margin-top: 15px;
+  font-size: 0.9rem;
   letter-spacing: 4px;
   font-weight: 700;
-  opacity: 0.4;
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
 }
 
-.label-lit {
-  opacity: 1;
-  color: #00ffcc;
-  text-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
-  transform: translateY(-10px);
+.lamp-caption .gold-text {
+  color: #7a6135;
+  transition: all 0.5s ease;
+}
+
+.is-ignited .lamp-caption .gold-text {
+  color: #d4af37;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 }
