@@ -1,6 +1,7 @@
 .display-container {
   height: 100vh;
-  background: #050608; /* Pitch black studio backdrop */
+  /* Polished mahogany wood board color */
+  background: radial-gradient(circle at center, #5c2b16 0%, #2a1106 60%, #120500 100%);
   color: white;
   display: flex;
   flex-direction: column;
@@ -10,147 +11,155 @@
   position: relative;
 }
 
-.ambient-glow {
+/* Subtle wood grain overlay & board markings */
+.board-texture {
   position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100vw;
-  height: 100vh;
-  background: radial-gradient(ellipse, rgba(255, 69, 0, 0.04) 0%, transparent 70%);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 2px, transparent 2px, transparent 8px);
   pointer-events: none;
+  z-index: 1;
+}
+
+.board-lines {
+  position: absolute;
+  bottom: 12vh;
+  width: 100%;
+  height: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  border-top: 3px solid #d32f2f;
+  border-bottom: 3px solid #d32f2f;
+  z-index: 2;
 }
 
 .branding-header {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 50px;
   z-index: 10;
 }
 
 .branding-header h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   color: #ffffff;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
   margin-bottom: 10px;
-  font-weight: 700;
+  font-weight: 800;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.8);
 }
 
 .branding-header h2 {
-  font-size: 1rem;
-  color: #666;
-  letter-spacing: 10px;
-  font-weight: 400;
+  font-size: 1.2rem;
+  color: #00ffcc;
+  letter-spacing: 12px;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
 }
 
 .ceremony-stage {
   margin-top: auto;
-  margin-bottom: 8vh;
+  margin-bottom: 15vh;
   position: relative;
   width: 90%;
   display: flex;
   justify-content: center;
+  z-index: 10;
 }
 
-.modern-platform {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(to right, transparent, #444, transparent);
-  box-shadow: 0 -5px 20px rgba(255, 255, 255, 0.05);
-  z-index: 1;
-}
-
-.lamps-wrapper {
+.strikers-wrapper {
   display: flex;
-  gap: 70px;
-  z-index: 2;
-  align-items: flex-end;
+  gap: 80px;
+  align-items: center;
 }
 
-.lamp-station {
+.striker-station {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
 }
 
-/* Sizing the new SVG properly */
-.joint-svg {
-  width: 95px; 
-  height: 240px;
-  z-index: 3;
-  transition: transform 0.3s ease;
-}
-
-/* Make it pulse slightly and cast a red glow when lit */
-.joint-svg.is-burning {
-  filter: drop-shadow(0 0 25px rgba(255, 69, 0, 0.2));
-}
-
-.active-cherry {
-  animation: cherry-breathe 2.5s infinite alternate ease-in-out;
-}
-
-@keyframes cherry-breathe {
-  0% { filter: drop-shadow(0 0 8px #ff4500) brightness(1); }
-  100% { filter: drop-shadow(0 0 25px #ff2a00) brightness(1.3); }
-}
-
-/* Improved, natural billowing smoke */
-.smoke-area {
-  position: absolute;
-  top: -150px; 
-  left: 50%;
-  transform: translateX(-50%);
+/* SVG Striker Styling */
+.striker-svg {
   width: 140px;
-  height: 180px;
-  z-index: 4;
-  pointer-events: none;
+  height: 140px;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.smoke-plume {
+.color-ring, .center-star {
+  transition: all 0.4s ease;
+}
+
+/* The Magic! What happens when you tap the tablet */
+.striker-svg.is-active {
+  transform: translateY(-20px) scale(1.1); /* Levitates */
+  filter: drop-shadow(0 20px 30px rgba(0, 255, 204, 0.4)) 
+          drop-shadow(0 0 60px rgba(0, 179, 255, 0.6));
+}
+
+.striker-svg.is-active .striker-shadow {
+  transform: translateY(20px) scale(0.8);
+  opacity: 0.3;
+}
+
+/* Carrom Powder (Boric Acid) Particle Animation */
+.powder-area {
   position: absolute;
-  bottom: 0;
+  top: 50%;
   left: 50%;
-  width: 15px;
-  height: 15px;
-  background: radial-gradient(circle, rgba(220, 220, 220, 0.7) 0%, transparent 60%);
-  border-radius: 50%;
-  opacity: 0;
-  filter: blur(10px);
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  z-index: -1;
 }
 
-/* Multi-layered smoke timing for realism */
-.smoke-fast { animation: billow 2.5s infinite ease-in; left: 45%; }
-.smoke-slow { animation: billow 4s infinite ease-in 1.2s; left: 55%; width: 25px; }
-.smoke-wide { animation: billow 3.5s infinite ease-in 2s; left: 40%; width: 30px; }
+.powder-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ffffff;
+  opacity: 0;
+}
 
-@keyframes billow {
+/* Individual particle trajectories */
+.p1 { animation: powderExplode 2s infinite ease-out; top: 50%; left: 50%; }
+.p2 { animation: powderExplode 2.2s infinite ease-out 0.4s; top: 40%; left: 45%; }
+.p3 { animation: powderExplode 1.8s infinite ease-out 0.8s; top: 60%; left: 55%; }
+.p4 { animation: powderExplode 2.5s infinite ease-out 1.2s; top: 45%; left: 60%; }
+.p5 { animation: powderExplode 2.1s infinite ease-out 1.6s; top: 55%; left: 40%; }
+
+@keyframes powderExplode {
   0% {
-    transform: translateY(0) scale(1) translateX(0) rotate(0deg);
-    opacity: 0.8;
-  }
-  30% {
-    opacity: 0.5;
+    transform: translate(0, 0) scale(1);
+    opacity: 0.9;
   }
   100% {
-    transform: translateY(-160px) scale(6) translateX(30px) rotate(45deg);
+    transform: translate(calc(-50px + 100px * var(--x, 1)), calc(-80px + 120px * var(--y, -1))) scale(0);
     opacity: 0;
   }
 }
+/* Adding random directions using nth-child */
+.p1 { --x: -0.8; --y: -1; }
+.p2 { --x: 0.5; --y: -1.2; }
+.p3 { --x: 1.2; --y: -0.5; }
+.p4 { --x: -1.2; --y: -0.2; }
+.p5 { --x: 0.2; --y: -1.5; }
 
-.lamp-label {
-  margin-top: 30px;
-  color: #444;
-  font-size: 0.85rem;
-  letter-spacing: 5px;
+/* Text Labels */
+.station-label {
+  margin-top: 35px;
+  color: #fff;
+  font-size: 1.1rem;
+  letter-spacing: 4px;
   font-weight: 700;
-  transition: all 0.5s ease;
+  opacity: 0.4;
+  transition: all 0.4s ease;
 }
 
 .label-lit {
-  color: #aaa;
-  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+  opacity: 1;
+  color: #00ffcc;
+  text-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
+  transform: translateY(-10px);
 }
-
