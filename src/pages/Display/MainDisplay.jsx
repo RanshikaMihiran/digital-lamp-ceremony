@@ -108,13 +108,13 @@ const MainDisplay = () => {
       <div className="golden-soft-glow"></div>
       
       <div className="branding-wrapper">
-        <h1 className="main-title">MAHA KARYALAYA ANNUAL EVENT</h1>
+        <h1 className="main-title">HCB</h1>
         <div className="title-divider">
           <span className="line"></span>
           <span className="diamond">♦</span>
           <span className="line"></span>
         </div>
-        <h2 className="sub-title">DIGITAL LAMP LIGHTING CEREMONY</h2>
+        <h2 className="sub-title">Carrom 2026</h2>
       </div>
       
       <div className="display-stage">
